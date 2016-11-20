@@ -97,32 +97,4 @@ Sub SendOscInteger()
 End Sub
 // ********************************************************
 
-// ********************************************************
-Sub SendOscFloat()
-     Dim message As string
-     Dim address As string
-     Dim argument As Integer
-   Dim floatValue As Double
-   floatValue =Val(P1)
-     Dim hexString As String = Right("00000000"+Hex(floatValue ), 8)
-   P1Default = P1
-   
-   address=DP1+chr(0)
-    DP1Default =DP1
-   
-       while len(address) mod 4 <> 0
-       address = address+ chr(0)
-     wend
-   
-   Dim b1 As Integer = val("&h"+MidB(hexString, 7,2))
-   Dim b2 As Integer = val("&h"+MidB(hexString, 5,2))
-   Dim b3 As Integer = val("&h"+MidB(hexString, 3,2))
-   Dim b4 As Integer = val("&h"+MidB(hexString, 1,2))
-   
-   
-     //                    address    ,   nullchr  nullchr nullchr
-      ScriptResult=address+",f"+Chr(0)+Chr(0)+ChrB(b4)+ChrB(b3)+ChrB(b2)+ChrB(b1)
-   
-End Sub
-// ********************************************************
 
